@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portifólio Leandro</title>
+
+  <!-- Fontes e estilos -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Partículas -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+  <script>
+    window.onload = () => {
+      tsParticles.load("particulas", {
+        fullScreen: { enable: false },
+        particles: {
+          number: { value: 80 },
+          color: { value: "#ffffff" },
+          shape: { type: "circle" },
+          opacity: { value: 0.5 },
+          size: { value: { min: 1, max: 3 } },
+          move: { enable: true, speed: 1 },
+        },
+        background: { color: "transparent" },
+      });
+    };
+  </script>
+</head>
+
+<body>
+  <!-- Navegação -->
+  <nav class="navegaçao">
+    <ul class="menu">
+      <li><a href="#inicio" class="menu-link">Início</a></li>
+      <li><a href="#sobre" class="menu-link">Sobre</a></li>
+      <li><a href="#projetos" class="menu-link">Projetos</a></li>
+      <li><a href="#contatos" class="menu-link">Contato</a></li>
+    </ul>
+  </nav>
+
+  <!-- Início -->
+  <section id="inicio" class="inicio-container">
+    <div id="particulas" class="particulas"></div>
+    <div class="inicio-conteudo">
+      <div class="inicio-texto">
+        <h1>Olá, eu sou o Leandro</h1>
+        <p class="digitando" style="font-size: 2rem; font-family: 'Poppins', sans-serif; color: #00ffc8; font-weight: bold;"></p>
+        <p>Sou estudante de Análise e Desenvolvimento de Sistemas e apaixonado por tecnologia.</p>
+        <div class="home-buttons">
+          <a href="#contatos" class="btn">Contato</a>
+          <a href="./curriculo/LeandroFilipe-Curriculo.pdf" class="btn-outline" download>Baixar CV</a>
+
+        </div>
+      </div>
+      <div class="inicio-imagem">
+        <img src="./img/leandro.jpg" alt="Foto de Leandro Filipe" class="foto-perfil" />
+      </div>
+    </div>
+  </section>
+  <section id="sobre" class="sobre">
+    <h2 class="sobre-titulo">Sobre mim</h2>
+    <div class="sobre-caixa">
+      <p class="sobre-paragrafo">
+        Sou um desenvolvedor apaixonado por tecnologia, sempre buscando aprender e evoluir.
+        Gosto de criar soluções eficientes e bem estruturadas, com atenção aos detalhes e usabilidade.
+      </p>
+  
+      <h3 style="margin-top: 2rem;">Tecnologias que uso:</h3>
+      <div class="sobre-icones">
+        <i class="fab fa-html5" title="HTML5"></i>
+        <i class="fab fa-css3-alt" title="CSS3"></i>
+        <i class="fab fa-python" title="Python"></i>
+        <i class="fas fa-database" title="MySQL"></i>
+        <i class="fas fa-code" title="C++"></i>
+        <i class="fab fa-java" title="Java"></i>
+      </div>
+    </div>
+  </section>
+  
+  
+
+  <!-- Sobre (se existir) -->
+  <!-- <section id="sobre" class="sobre"> ... </section> -->
+
+  <!-- Projetos -->
+  <section id="projetos" class="projetos">
+    <h2 class="projetos-titulo">Meus Projetos</h2>
+    <div class="projetos-caixa">
+      <div class="projetos-card">
+        <img src="./img/login.jpg" alt="Projeto 1" class="projetos-imagem" />
+        <div class="caixa-textos-projeto">
+          <h3 class="info-projetos">Tela de Login</h3>
+          <p class="paragrafo-projetos">Tela de login moderna com animações suaves e design responsivo</p>
+        </div>
+      </div>
+      <div class="projetos-card">
+        <img src="./img/declaracao.jpg" alt="Projeto 2" class="projetos-imagem" />
+        <div class="caixa-textos-projeto">
+          <h3 class="info-projetos">Site de declaração</h3>
+          <p class="paragrafo-projetos">Site de declaração com foco em responsividade e acessibilidade</p>
+        </div>
+      </div>
+      <div class="projetos-card">
+        <img src="./img/corte.jpg" alt="Projeto 3" class="projetos-imagem" />
+        <div class="caixa-textos-projeto">
+          <h3 class="info-projetos">Cálculo de Corte</h3>
+          <p class="paragrafo-projetos">Ferramenta para cálculo de corte em produção industrial</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contatos" class="contatos">
+    <h2 class="contatos-titulo">Entre em contato</h2>
+    <form class="formulário-contato" id="formulario" onsubmit="enviarWhats(event)">
+      <div class="grupo-form">
+        <input placeholder="Nome" class="campo-form" id="nome" />
+      </div>
+      <div class="grupo-form">
+        <textarea class="campo-form" placeholder="Digite sua mensagem" rows="5" id="mensagem"></textarea>
+      </div>
+      <button type="submit" class="botao-form">Enviar Whatsapp</button>
+      <a href="./curriculo/LeandroFilipe-Curriculo.pdf" download class="botao-form baixar-curriculo">
+        Baixar Currículo
+      </a>
+    </form>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="rodape">
+    <a href="https://www.linkedin.com/in/leandro-filipe-silva-le%C3%A3o-514ab1222/" target="_blank" class="icon-link">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://github.com/devLeao" target="_blank" class="icon-link">
+      <i class="fab fa-github"></i>
+    </a>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function enviarWhats(event) {
+      event.preventDefault();
+      const nome = document.getElementById('nome').value;
+      const mensagem = document.getElementById('mensagem').value;
+      const telefone = '5531987373781';
+      const texto = `Olá! Me chamo ${nome}, ${mensagem}`;
+      const msgFormatada = encodeURIComponent(texto);
+      const url = `https://whatsa.me/${telefone}/?t=${msgFormatada}`;
+      window.open(url, '_blank');
+    }
+
+    const palavras = ["Programador", "Desenvolvedor", "Front-end", "Back-end", "Full Stack"];
+    const span = document.querySelector(".digitando");
+    let palavraIndex = 0;
+    let letraIndex = 0;
+    let apagando = false;
+
+    function digitar() {
+      const palavraAtual = palavras[palavraIndex];
+      if (!apagando) {
+        span.textContent = palavraAtual.substring(0, letraIndex++);
+        if (letraIndex > palavraAtual.length) {
+          apagando = true;
+          setTimeout(digitar, 2000);
+          return;
+        }
+      } else {
+        span.textContent = palavraAtual.substring(0, letraIndex--);
+        if (letraIndex < 0) {
+          apagando = false;
+          palavraIndex = (palavraIndex + 1) % palavras.length;
+        }
+      }
+      setTimeout(digitar, apagando ? 50 : 100);
+    }
+
+    digitar();
+  </script>
+</body>
+
+</html>
