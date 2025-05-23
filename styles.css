@@ -717,4 +717,88 @@ h1 {
     margin-bottom: 50px; /* Ajuste o valor do espaçamento conforme necessário */
     color: var(--primaria); /* Definindo a cor do texto */
   }
+  .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 2rem;
   
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-conteudo {
+  background: #111827;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 700px;
+  width: 100%;
+  color: #fff;
+  position: relative;
+  text-align: center;
+}
+.modal-conteudo {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-imagens img {
+  width: 100%;
+  border-radius: 8px;
+  transition: opacity 1s ease;
+  opacity: 1;
+  display: block;
+  margin: 0 auto;
+}
+
+.modal-fechar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  font-size: 2rem;
+  color: #fff;
+}
+.modal-conteudo p {
+  margin-bottom: 1rem;
+}
+
+#modal-link {
+  margin-top: 1rem;
+  display: inline-block;
+}
+#carousel-dots {
+  display: flex;
+  flex-direction: column; /* empilha as bolinhas verticalmente */
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+.carousel-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 6px;
+  background-color: #888;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  
+}
+
+.carousel-dot:hover {
+  transform: scale(1.3);
+}
+
+.carousel-dot.active {
+  background-color: #00ffc8;
+}

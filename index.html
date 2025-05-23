@@ -115,34 +115,70 @@
       <span class="cor-simbolo">&lt;</span>My Projects<span class="cor-simbolo">&gt;</span>
     </h2>
     <div class="projetos-caixa">
-      <div class="projetos-card">
+      <div class="projetos-card" data-id="login">
         <img src="./img/login.jpg" alt="Projeto 1" class="projetos-imagem" />
         <div class="caixa-textos-projeto">
           <h3 class="info-projetos">Tela de Login</h3>
           <p class="paragrafo-projetos">Tela de login moderna com animações suaves e design responsivo</p>
         </div>
       </div>
-      <div class="projetos-card">
+      <div class="projetos-card" data-id="portifolio">
         <img src="./img/portifolio.png" alt="Projeto 2" class="projetos-imagem" />
         <div class="caixa-textos-projeto">
           <h3 class="info-projetos">Portfólio</h3>
           <p class="paragrafo-projetos">"Portfólio pessoal desenvolvido para apresentar meus projetos, habilidades e trajetória como desenvolvedor."</p>
         </div>
       </div>
-      <div class="projetos-card">
+      <div class="projetos-card" data-id="formulario">
         <img src="./img/formulario.png" alt="Projeto 3" class="projetos-imagem" />
         <div class="caixa-textos-projeto">
           <h3 class="info-projetos">Formulário</h3>
-          <p class="paragrafo-projetos">Sistema de formulário feito de maneira minimalista, visando o bom funcionamento e o visual moderno.</p>
+          <p class="paragrafo-projetos">Formulário minimalista e funcional.</p>
         </div>
       </div>
-      <div class="projetos-card">
-        <img src="./img/calculo.jpeg" alt="Projeto 3" class="projetos-imagem" />
+<div class="projetos-card" data-id="calculo">
+  <img src="./img/calculo.jpeg" alt="Projeto 3" class="projetos-imagem" />
+  <div class="caixa-textos-projeto">
+    <h3 class="info-projetos">Cálculo de Corte</h3>
+    <p class="paragrafo-projetos">
+      Desenvolvi um aplicativo em Python com integração a um banco de dados SQL para automatizar o cálculo de cortes ideais de tubos de alumínio utilizados na fabricação de móveis.
+    </p>
+  </div>
+</div>
+
+
+         <div class="projetos-card"data-id="circular">
+        <img src="./img/ciruclar1.png" alt="Projeto 5" class="projetos-imagem" />
         <div class="caixa-textos-projeto">
-          <h3 class="info-projetos">Cálculo de Corte</h3>
-          <p class="paragrafo-projetos">Aplicativo desenvolvido em Python para calcular cortes ideais de tubos de alumínio, reduzindo desperdício de matéria-prima na produção de móveis.</p>
+          <h3 class="info-projetos">Circular Game</h3>
+          <p class="paragrafo-projetos">Desenvolvi o Circular Game, uma aplicação web interativa que visa educar usuários sobre os princípios da economia circular.
+
+</p>
         </div>
-      </div>
+        </div>
+        
+<div class="projetos-card" data-id="cultural">
+  <img src="./img/cultural.png" alt="Projeto 6" class="projetos-imagem" />
+  <div class="caixa-textos-projeto">
+    <h3 class="info-projetos">Choque de Cultura</h3>
+    <p class="paragrafo-projetos">Desenvolvi o site Choque de Cultura, uma aplicação web interativa voltada para a promoção da cultura e arte do Brasil. </p>
+  </div>
+</div>
+         <div class="projetos-card" data-id="lpgabi">
+        <img src="./img/lpgabi.png" alt="Projeto 7" class="projetos-imagem" />
+        <div class="caixa-textos-projeto">
+          <h3 class="info-projetos">LP Gabriela Dias</h3>
+          <p class="paragrafo-projetos">Desenvolvi o site institucional da nutricionista Gabriela Dias, com o objetivo de apresentar seus serviços, especialidades e facilitar o agendamento de consultas.</p>
+        </div>
+        </div>
+
+<div class="projetos-card" data-id="lpstar">
+  <img src="./img/lpstar.png" alt="Projeto 8" class="projetos-imagem" />
+  <div class="caixa-textos-projeto">
+    <h3 class="info-projetos">Landing Page Starbucks</h3>
+    <p class="paragrafo-projetos">Desenvolvi uma landing page interativa inspirada na identidade visual da Starbucks, com o objetivo de simular a experiência de navegação em uma página oficial da marca...</p>
+  </div>
+</div>
       
       
       
@@ -167,6 +203,16 @@
       </a>
     </form>
   </section>
+    <div id="modal-projeto" class="modal hidden">
+  <div class="modal-conteudo">
+    <span class="modal-fechar">&times;</span>
+    <div id="modal-imgs" class="modal-imagens"></div>
+    <h2 id="modal-titulo"></h2>
+    <p id="modal-descricao"></p>
+    <a id="modal-link" href="#" target="_blank" class="btn">Ver site</a>
+  </div>
+  <div id="carousel-dots" style="text-align:center; margin-top: 10px;"></div>
+</div>
 
   <!-- Rodapé -->
   <footer class="rodape">
@@ -225,6 +271,143 @@
 
     digitar();
   </script>
+<script>
+const projetosData = {
+  login: {
+    titulo: "Tela de Login",
+    descricao: "Tela de login moderna com animações suaves e design responsivo.",
+    imagens: ["./img/login.jpg"],
+    link: "#"
+  },
+  portifolio: {
+    titulo: "Portfólio",
+    descricao: "Portfólio pessoal para apresentar projetos e habilidades.",
+    imagens: ["./img/portifolio.png"],
+    link: "#"
+  },
+  formulario: {
+    titulo: "Formulário",
+    descricao: "Formulário minimalista e funcional.",
+    imagens: ["./img/formulario.png"],
+  
+  },
+  calculo: {
+    titulo: "Cálculo de Corte",
+    descricao: "Aplicativo que calcula cortes ideais de alumínio com banco SQL.",
+    imagens: ["./img/calculo.jpeg"],
+    link: "#"
+  },
+  circular: {
+    titulo: "Circular Game",
+    descricao: "Desenvolvi o Circular Game, uma aplicação web interativa que visa educar usuários sobre os princípios da economia circular. Através de seções temáticas e desafios gamificados, os usuários aprendem sobre práticas sustentáveis de forma envolvente. O projeto destaca-se por sua interface intuitiva, design responsivo e integração de elementos interativos que promovem o aprendizado ativo além do sistema de Ranking online. Hospedado no Netlify, o site demonstra a aplicação de tecnologias modernas para criar experiências educativas online.",
+    imagens: ["./img/ciruclar1.png","./img/ciruclar2.png", "./img/ciruclar3.png", "./img/ciruclar5.png"],
+    link: "https://circulargame.netlify.app/"
+  },
+  cultural: {
+    titulo: "Choque de Cultura",
+    descricao: "Desenvolvi o site Choque de Cultura, uma aplicação web interativa voltada para a promoção da cultura e arte do Brasil. O projeto conta com seções como História da Arte Brasileira, Mapa Cultural e um Jogo da Memória, combinando conteúdo educativo com uma experiência visual envolvente. Utilizei HTML, CSS e JavaScript para criar uma plataforma responsiva, intuitiva e rica em conteúdo visual, com o objetivo de democratizar o acesso ao conhecimento cultural.",
+    imagens: ["./img/cultural.png","./img/cultural1.png", "./img/cultural2.png", "./img/cultural3.png","./img/cultural4.png","./img/cultural5.png","./img/cultural6.png", "./img/cultural7.png", "./img/cultural8.png", "./img/cultural9.png"],
+    link: "https://choquedeculturadev.netlify.app/?secao=mapa"
+  },
+  lpgabi: {
+    titulo: "LP Gabriela Dias",
+    descricao: "Desenvolvi o site institucional da nutricionista Gabriela Dias, com o objetivo de apresentar seus serviços, especialidades e facilitar o agendamento de consultas. O projeto destaca-se por sua interface intuitiva, design responsivo e integração de elementos interativos que promovem a experiência do usuário. Hospedado no Netlify, o site demonstra a aplicação de tecnologias modernas para criar uma presença online profissional e acessível.",
+    imagens: ["./img/lpgabi.png", "./img/lpgabi1.png", "./img/lpgabi2.png"],
+    link: "https://gabidiasnutri.netlify.app/"
+  },
+  lpstar: {
+    titulo: "Landing Page Starbucks",
+    descricao: "Desenvolvi uma landing page interativa inspirada na identidade visual da Starbucks, com o objetivo de simular a experiência de navegação em uma página oficial da marca. O projeto destaca-se por seu design responsivo, organização de conteúdo e integração de elementos interativos, demonstrando habilidades em desenvolvimento front-end e atenção aos detalhes visuais. Hospedado no Netlify, o site oferece uma experiência fluida e acessível em diversos dispositivos.",
+    imagens: ["./img/lpstar.png", "./img/lpstar1.png", "./img/lpstar2.png"],
+    link: "sbucksdevleao.netlify.app"
+  }
+};
+</script>
+
+<script>
+document.querySelectorAll('.projetos-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const id = card.getAttribute('data-id');
+    const projeto = projetosData[id];
+    if (!projeto) return;
+
+    const tituloEl = document.getElementById('modal-titulo');
+    const descEl = document.getElementById('modal-descricao');
+    const linkEl = document.getElementById('modal-link');
+    const imagensContainer = document.getElementById('modal-imgs');
+    const dotsContainer = document.getElementById('carousel-dots');
+
+    // Reset visibilidade e conteúdo
+    tituloEl.style.display = '';
+    descEl.style.display = '';
+    linkEl.style.display = '';
+    tituloEl.textContent = projeto.titulo;
+    descEl.textContent = projeto.descricao;
+    linkEl.href = projeto.link;
+    imagensContainer.innerHTML = '';
+    dotsContainer.innerHTML = '';
+
+    if (window._carrosselInterval) clearInterval(window._carrosselInterval);
+
+    let imgAtual = 0;
+    const img = document.createElement('img');
+    img.src = projeto.imagens[imgAtual];
+    img.style.opacity = 1;
+    img.style.transition = "opacity 0.5s ease";
+    img.style.width = "100%";
+    img.style.borderRadius = "8px";
+    imagensContainer.appendChild(img);
+
+    // Criar bolinhas clicáveis
+    projeto.imagens.forEach((_, i) => {
+      const dot = document.createElement('span');
+      dot.classList.add('carousel-dot');
+      if (i === 0) dot.classList.add('active');
+
+      // Clique para trocar imagem manualmente
+      dot.addEventListener('click', () => {
+        clearInterval(window._carrosselInterval); // pausa
+        trocarImagem(i);
+        iniciarAuto(); // reinicia
+      });
+
+      dotsContainer.appendChild(dot);
+    });
+
+    function trocarImagem(indice) {
+      img.style.opacity = 0;
+      setTimeout(() => {
+        imgAtual = indice;
+        img.src = projeto.imagens[imgAtual];
+        img.style.opacity = 1;
+
+        document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+          dot.classList.toggle('active', i === imgAtual);
+        });
+      }, 300);
+    }
+
+    function iniciarAuto() {
+      window._carrosselInterval = setInterval(() => {
+        const proxima = (imgAtual + 1) % projeto.imagens.length;
+        trocarImagem(proxima);
+      }, 4000);
+    }
+
+    iniciarAuto(); // inicia carrossel automático
+
+    document.getElementById('modal-projeto').classList.remove('hidden');
+  });
+});
+
+document.querySelector('.modal-fechar').addEventListener('click', () => {
+  document.getElementById('modal-projeto').classList.add('hidden');
+  if (window._carrosselInterval) clearInterval(window._carrosselInterval);
+});
+</script>
+
+
+
 </body>
 
 </html>
