@@ -1,413 +1,344 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portifólio Leandro</title>
+  <title>Portfólio • Leandro Filipe</title>
 
-  <!-- Fontes e estilos -->
-  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <!-- SEO -->
+  <meta name="description" content="Portfólio profissional de Leandro Filipe — Desenvolvimento Web, Agentes de IA, Automação e Projetos." />
+  <meta property="og:title" content="Portfólio • Leandro Filipe" />
+  <meta property="og:description" content="Desenvolvimento Web • Agentes de IA • Automação • Projetos" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 
-
-
-  
-
-  <!-- Partículas -->
+  <!-- Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
-  <script>
-    window.onload = () => {
-      tsParticles.load("particulas", {
-        fullScreen: { enable: false },
-        particles: {
-          number: { value: 80 },
-          color: { value: "#ffffff" },
-          shape: { type: "circle" },
-          opacity: { value: 0.5 },
-          size: { value: { min: 1, max: 3 } },
-          move: { enable: true, speed: 1 },
-        },
-        background: { color: "transparent" },
-      });
-    };
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 </head>
 
 <body>
-  <!-- Navegação -->
-  <nav class="navegaçao">
-    <ul class="menu">
-      <li><a href="#inicio" class="menu-link">Início</a></li>
-      <li><a href="#sobre" class="menu-link">Sobre</a></li>
-      <li><a href="#projetos" class="menu-link">Projetos</a></li>
-      <li><a href="#contatos" class="menu-link">Contato</a></li>
-    </ul>
+  <!-- Animated gradient background (CSS) + subtle particles (JS) -->
+  <div id="bg-gradient"></div>
+  <div id="particles"></div>
+
+  <!-- Navbar -->
+<header class="nav">
+  <!-- Logo DevLeão -->
+  <a href="#inicio" class="brand">
+    <img src="img/devleaologo.jpeg" alt="DevLeão" class="logo">
+  </a>
+
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#ia">IA & Automação</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#certificados">Certificados</a>
+    <a href="#contato">Contato</a>
   </nav>
+</header>
 
-  <!-- Início -->
-  <section id="inicio" class="inicio-container">
-    <div id="particulas" class="particulas"></div>
-    <div class="inicio-conteudo">
-      <div class="inicio-texto">
-        <h1>Olá, eu sou o Leandro</h1>
-        <p class="digitando" style="font-size: 2rem; font-family: 'Poppins', sans-serif; color: #00ffc8; font-weight: bold;"></p>
-        <p>Sou estudante de ADS e adoro transformar ideias em projetos reais. Esse portfólio é um reflexo do que venho aprendendo e construindo — seja bem-vindo(a)!
-        </p>
-      
+  <!-- Hero -->
+  <section id="inicio" class="hero container">
+    <div class="hero-text">
+      <h1 aria-label="Olá, eu sou o Leandro">
+        Olá, eu sou o <span class="brand-grad">Leandro</span>
+      </h1>
+      <p class="typed" aria-live="polite"></p>
+      <p class="sub">
+        Desenvolvedor focado em transformar ideias em produtos reais.
+        Minha stack favorita combina Web, Automação e Agentes de IA.
+      </p>
+      <div class="cta">
+        <a href="#ia" class="btn">Agentes de IA</a>
+        <a href="./curriculo/LeandroFilipe-Curriculo.pdf" download class="btn btn-outline">Baixar CV</a>
       </div>
-      <div class="inicio-imagem">
-        <img src="./img/leandro.jpg" alt="Foto de Leandro Filipe" class="foto-perfil" />
-      </div>
+      <ul class="stack">
+        <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Python</li><li>Java</li><li>SQL</li>
+      </ul>
+    </div>
+    <div class="hero-photo">
+      <img src="./img/leandro.jpg" alt="Foto de Leandro Filipe" class="profile" />
     </div>
   </section>
-  <section id="sobre">
-    <h2 class="secao-titulo">
-      <span class="cor-simbolo">&lt;</span>Sobre Mim<span class="cor-simbolo">&gt;</span>
-    </h2>
-    
-    <div class="grid-sobre conectados">
-      <div class="card-sobre-conectado">
-        <h3> Quem sou Eu? </h3>
-        Sou Leandro Filipe, estudante de Análise e Desenvolvimento de Sistemas 4°período, apaixonado por tecnologia e por resolver problemas com lógica e criatividade. Natural de Belo Horizonte, tenho 20 (vinte) anos de idade.      </div>
-      <div class="card-sobre-conectado">
-        <h3>Experiências</h3>
-        <p>Tenho projetos no GitHub usando HTML, CSS, JavaScript, C++, Java e SQL. Estou sempre explorando novas soluções e reforçando meu aprendizado com projetos práticos. Além disso, participei de cursos e atividades que fortaleceram minha base em banco de dados e desenvolvimento web.</p>
+
+  <!-- Sobre -->
+  <section id="sobre" class="section container">
+    <h2><span>&lt;</span>Sobre Mim<span>&gt;</span></h2>
+    <div class="grid two">
+      <div class="card">
+        <h3>Quem sou</h3>
+        <p>Sou Leandro Filipe, estudante de Análise e Desenvolvimento de Sistemas (4º período), apaixonado por tecnologia,
+          resolução de problemas e construção de soluções com foco em experiência do usuário e impacto real.</p>
       </div>
-      <div class="card-sobre-conectado">
-        <h3>Conhecimentos</h3>
-        Tenho experiência em desenvolvimento web com HTML, CSS, JavaScript, Python e Java. Uso Git/GitHub, bancos de dados como MySQL e PostgreSQL, e aplico conceitos de POO, design responsivo, UI/UX, APIs REST e fundamentos de backend.      </div>
-      <div class="card-sobre-conectado">
-        <h3>Visão de desenvolvimento</h3>
-        <p>Busco escrever código limpo, pensar em soluções práticas e evoluir constantemente como desenvolvedor.</p>
+      <div class="card">
+        <h3>Experiência & Base Técnica</h3>
+        <p>Projetos com <strong>HTML, CSS, JavaScript, Python, Java e SQL</strong>. Vivência com Git/GitHub, REST APIs,
+           POO, banco de dados (MySQL e PostgreSQL), design responsivo e fundamentos de backend.</p>
       </div>
-      <div class="card-sobre-conectado">
+      <div class="card">
+        <h3>Visão</h3>
+        <p>Código limpo, soluções pragmáticas e evolução contínua. Curto criar interfaces fluidas e automações que poupam tempo.</p>
+      </div>
+      <div class="card">
         <h3>Objetivos</h3>
-        <p>Expandir minha atuação em projetos desafiadores, aplicando minhas habilidades técnicas para impulsionar a inovação e o sucesso organizacional.        </p>
+        <p>Atuar em projetos desafiadores, especialmente com <strong>automação</strong> e <strong>IA aplicada</strong> ao negócio.</p>
       </div>
-  <div class="card-sobre-conectado">
-        <h3>Tecnologias que uso</h3>
-        <div class="sobre-icones">
-          <i class="fab fa-html5" title="HTML5"></i>
-          <i class="fab fa-css3-alt" title="CSS3"></i>
-          <i class="fab fa-python" title="Python"></i>
-          <i class="fas fa-database" title="MySQL"></i>
-          <i class="fas fa-code" title="C++"></i>
-          <i class="fab fa-java" title="Java"></i>
-        </div>
-      </div>
-  
+      <!-- NOVOS CARDS -->
+<div class="card">
+  <h3>Soft Skills</h3>
+  <ul class="tags">
+    <li>Comunicação</li><li>Trabalho em equipe</li><li>Proatividade</li>
+    <li>Resolução de problemas</li><li>Organização</li><li>Aprendizado rápido</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Linguagens & Ferramentas</h3>
+  <div class="skills-grid">
+    <button class="skill-btn"><i class="devicon-sqlite-plain"></i>SQL</button>
+    <button class="skill-btn"><i class="devicon-java-plain"></i>Java</button>
+    <button class="skill-btn"><i class="devicon-javascript-plain"></i>JavaScript</button>
+    <button class="skill-btn"><i class="devicon-python-plain"></i>Python</button>
+    <button class="skill-btn"><i class="devicon-html5-plain"></i>HTML</button>
+    <button class="skill-btn"><i class="devicon-css3-plain"></i>CSS</button>
+    <button class="skill-btn"><i class="devicon-git-plain"></i>Git</button>
+  </div>
+</div>
     </div>
   </section>
-  
-  
-  
 
-  <!-- Sobre (se existir) -->
-  <!-- <section id="sobre" class="sobre"> ... </section> -->
+  <!-- IA & Automação -->
+  <section id="ia" class="section container">
+    <h2><span>&lt;</span>Agentes de IA & Automação<span>&gt;</span></h2>
+    <p class="section-lead">
+      Construo agentes e automações que reduzem tarefas manuais e aumentam conversões.
+    </p>
+    <div class="grid three">
+      <article class="card card-feature">
+        <div class="icon"><i class="fa-solid fa-robot"></i></div>
+        <h3>Agente de Opt‑in no WhatsApp</h3>
+        <p>Agente com linguagem natural, memória resumida, tentativa automática (até 3x), e atualização de status no banco.
+           Interpreta respostas e registra consentimento com rastreabilidade.</p>
+        <ul class="tags"><li>LangChain</li><li>Embeddings</li><li>Supabase</li></ul>
+      </article>
+      <article class="card card-feature">
+        <div class="icon"><i class="fa-solid fa-gears"></i></div>
+        <h3>Automação End‑to‑End</h3>
+        <p>Integração entre Webhooks, filas, APIs externas (ex.: Evolution/WhatsApp), persistência SQL e dashboards. 
+           Fluxos à prova de falhas com reenvio e controle de tentativas.</p>
+        <ul class="tags"><li>APIs</li><li>Webhooks</li><li>Retry Logic</li></ul>
+      </article>
+      <article class="card card-feature">
+        <div class="icon"><i class="fa-solid fa-brain"></i></div>
+        <h3>RAG & Busca Semântica</h3>
+        <p>Vector Store (Supabase) e embeddings para enriquecer respostas. Gate de contexto para diferenciar dúvidas x opt‑in.</p>
+        <ul class="tags"><li>RAG</li><li>Vector DB</li><li>OpenAI</li></ul>
+      </article>
+    </div>
+  </section>
+  <section id="agentes" class="section container">
+  <h2><span>&lt;</span>Agentes (n8n)<span>&gt;</span></h2>
+  <p class="section-lead">Fluxos n8n com opt-in, integrações e automações.</p>
+
+  <!-- 3 cards com imagens dos fluxos -->
+  <div class="grid three">
+    <article class="proj-card">
+      <img src="./img/n8n-flow-1.png" alt="Fluxo n8n 1" loading="lazy">
+      <div class="proj-text">
+        <h3>Opt-in WhatsApp</h3>
+        <p>Detecção de consentimento, tentativas e registro no banco.</p>
+      </div>
+    </article>
+
+    <article class="proj-card">
+      <img src="./img/n8n-flow-2.png" alt="Fluxo n8n 2" loading="lazy">
+      <div class="proj-text">
+        <h3>Webhook & Fila</h3>
+        <p>Orquestração entre webhooks, filas e APIs externas.</p>
+      </div>
+    </article>
+
+    <article class="proj-card">
+      <img src="./img/n8n-flow-3.png" alt="Fluxo n8n 3" loading="lazy">
+      <div class="proj-text">
+        <h3>Memória Vetorial</h3>
+        <p>Embeddings + Supabase para contexto e buscas semânticas.</p>
+      </div>
+    </article>
+  </div>
+</section>
 
   <!-- Projetos -->
-  <section id="projetos" class="projetos">
-    <h2 class="secao-titulo">
-      <span class="cor-simbolo">&lt;</span>My Projects<span class="cor-simbolo">&gt;</span>
-    </h2>
-    <div class="projetos-caixa">
-      <div class="projetos-card" data-id="login">
-        <img src="./img/login.jpg" alt="Projeto 1" class="projetos-imagem" />
-        <div class="caixa-textos-projeto">
-          <h3 class="info-projetos">Tela de Login</h3>
-          <p class="paragrafo-projetos">Tela de login moderna com animações suaves e design responsivo</p>
-        </div>
-      </div>
-      <div class="projetos-card" data-id="portifolio">
-        <img src="./img/portifolio.png" alt="Projeto 2" class="projetos-imagem" />
-        <div class="caixa-textos-projeto">
-          <h3 class="info-projetos">Portfólio</h3>
-          <p class="paragrafo-projetos">"Portfólio pessoal desenvolvido para apresentar meus projetos, habilidades e trajetória como desenvolvedor."</p>
-        </div>
-      </div>
-      <div class="projetos-card" data-id="formulario">
-        <img src="./img/formulario.png" alt="Projeto 3" class="projetos-imagem" />
-        <div class="caixa-textos-projeto">
-          <h3 class="info-projetos">Formulário</h3>
-          <p class="paragrafo-projetos">Formulário minimalista e funcional.</p>
-        </div>
-      </div>
-<div class="projetos-card" data-id="calculo">
-  <img src="./img/calculo.jpeg" alt="Projeto 3" class="projetos-imagem" />
-  <div class="caixa-textos-projeto">
-    <h3 class="info-projetos">Cálculo de Corte</h3>
-    <p class="paragrafo-projetos">
-      Desenvolvi um aplicativo em Python com integração a um banco de dados SQL para automatizar o cálculo de cortes ideais de tubos de alumínio utilizados na fabricação de móveis.
-    </p>
-  </div>
-</div>
+  <section id="projetos" class="section container">
+    <h2><span>&lt;</span>Projetos<span>&gt;</span></h2>
+    <div class="projects-grid">
+      <!-- Cards serão preenchidos pelo JS abaixo usando os dados originais do usuário -->
+      <div id="projects-mount"></div>
+    </div>
+  </section>
 
-
-         <div class="projetos-card"data-id="circular">
-        <img src="./img/ciruclar1.png" alt="Projeto 5" class="projetos-imagem" />
-        <div class="caixa-textos-projeto">
-          <h3 class="info-projetos">Circular Game</h3>
-          <p class="paragrafo-projetos">Desenvolvi o Circular Game, uma aplicação web interativa que visa educar usuários sobre os princípios da economia circular.
-
-</p>
-        </div>
-        </div>
-        
-<div class="projetos-card" data-id="cultural">
-  <img src="./img/cultural.png" alt="Projeto 6" class="projetos-imagem" />
-  <div class="caixa-textos-projeto">
-    <h3 class="info-projetos">Choque de Cultura</h3>
-    <p class="paragrafo-projetos">Desenvolvi o site Choque de Cultura, uma aplicação web interativa voltada para a promoção da cultura e arte do Brasil. </p>
-  </div>
-</div>
-         <div class="projetos-card" data-id="lpgabi">
-        <img src="./img/lpgabi.png" alt="Projeto 7" class="projetos-imagem" />
-        <div class="caixa-textos-projeto">
-          <h3 class="info-projetos">LP Gabriela Dias</h3>
-          <p class="paragrafo-projetos">Desenvolvi o site institucional da nutricionista Gabriela Dias, com o objetivo de apresentar seus serviços, especialidades e facilitar o agendamento de consultas.</p>
-        </div>
-        </div>
-
-<div class="projetos-card" data-id="lpstar">
-  <img src="./img/lpstar.png" alt="Projeto 8" class="projetos-imagem" />
-  <div class="caixa-textos-projeto">
-    <h3 class="info-projetos">Landing Page Starbucks</h3>
-    <p class="paragrafo-projetos">Desenvolvi uma landing page interativa inspirada na identidade visual da Starbucks, com o objetivo de simular a experiência de navegação em uma página oficial da marca...</p>
-  </div>
-</div>
-      
-      
-      
+  <!-- Certificados -->
+  <section id="certificados" class="section container">
+    <h2><span>&lt;</span>Certificados<span>&gt;</span></h2>
+    <p class="section-lead">Espaço para seus certificados. Substitua as imagens/links abaixo pelos seus.</p>
+    <div class="grid three certs">
+      <a class="cert" href="#" target="_blank" rel="noopener">
+        <img src="./img/Captura de Tela (390).png" alt="Certificado 1 (substituir)" />
+        <span>Análise de dados com Python • Anhanguera • 2025</span>
+      </a>
+      <a class="cert" href="#" target="_blank" rel="noopener">
+        <img src="./img/Captura de Tela (391).png" alt="Certificado 2 (substituir)" />
+        <span>Análise BI • Bradesco • 2025</span>
+      </a>
+      <a class="cert" href="#" target="_blank" rel="noopener">
+        <img src="./img/Certificado - NoCode StartUp - Leandro Liberio - Converse com PDF, Planilha e Arquivos _ RAG - N8N (1).png" alt="Certificado 3 (substituir)" />
+        <span>Agente de IA RAG • NoCode • 2025</span>
+      </a>
     </div>
   </section>
 
   <!-- Contato -->
-  <section id="contatos" class="contatos">
-    <h2 class="secao-titulo">
-      <span class="cor-simbolo">&lt;</span>Contact me<span class="cor-simbolo">&gt;</span>
-    </h2>
-    <form class="formulário-contato" id="formulario" onsubmit="enviarWhats(event)">
-      <div class="grupo-form">
-        <input placeholder="Nome" class="campo-form" id="nome" />
+  <section id="contato" class="section container">
+    <h2><span>&lt;</span>Contato<span>&gt;</span></h2>
+    <form class="form" id="formulario" onsubmit="enviarWhats(event)">
+      <div class="field">
+        <label for="nome">Nome</label>
+        <input id="nome" placeholder="Seu nome" required />
       </div>
-      <div class="grupo-form">
-        <textarea class="campo-form" placeholder="Digite sua mensagem" rows="5" id="mensagem"></textarea>
+      <div class="field">
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" rows="4" placeholder="Como posso ajudar?" required></textarea>
       </div>
-      <button type="submit" class="botao-form">Enviar Whatsapp</button>
-      <a href="./curriculo/LeandroFilipe-Curriculo.pdf" download class="botao-form baixar-curriculo">
-        Baixar Currículo
-      </a>
+      <button type="submit" class="btn">Enviar no WhatsApp</button>
+      <a href="./curriculo/LeandroFilipe-Curriculo.pdf" download class="btn btn-outline">Baixar Currículo</a>
     </form>
   </section>
-    <div id="modal-projeto" class="modal hidden">
-  <div class="modal-conteudo">
-    <span class="modal-fechar">&times;</span>
-    <div id="modal-imgs" class="modal-imagens"></div>
-    <h2 id="modal-titulo"></h2>
-    <p id="modal-descricao"></p>
-    <a id="modal-link" href="#" target="_blank" class="btn">Ver site</a>
-  </div>
-  <div id="carousel-dots" style="text-align:center; margin-top: 10px;"></div>
-</div>
 
-  <!-- Rodapé -->
-  <footer class="rodape">
-    <a href="https://www.linkedin.com/in/leandro-filipe-silva-le%C3%A3o-514ab1222/" target="_blank" class="icon-link">
-      <i class="fab fa-linkedin"></i>
-    </a>
-    <a href="https://github.com/devLeao" target="_blank" class="icon-link">
-      <i class="fab fa-github"></i>
-    </a>
-    <span class="assinatura-rodape">Desenvolvido por Dev Leão, 2025</span>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/leandro-filipe-silva-le%C3%A3o-514ab1222/" target="_blank" class="icon-link" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/devLeao" target="_blank" class="icon-link" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <span class="copy">© Dev Leão • 2025</span>
   </footer>
 
   <!-- Scripts -->
   <script>
+    // Particles
+    window.addEventListener('load', () => {
+      tsParticles.load("particles", {
+        fullScreen: { enable: false },
+        particles: {
+          number: { value: 60 },
+          color: { value: "#ffffff" },
+          shape: { type: "circle" },
+          opacity: { value: 0.15 },
+          size: { value: { min: 1, max: 2 } },
+          move: { enable: true, speed: 0.6 },
+        },
+        background: { color: "transparent" },
+      });
+    });
+
+    // Typed effect
+    const roles = [
+      "Desenvolvedor Front‑End",
+      "Full‑Stack Júnior",
+      "Automação & APIs",
+      "Agentes de IA",
+      "UI/UX Lover",
+      "Back‑End (Java & Python)"
+    ];
+    const typed = document.querySelector('.typed');
+    let r = 0, c = 0, deleting = false;
+    function typeLoop() {
+      const current = roles[r];
+      if (!deleting) {
+        typed.textContent = current.slice(0, ++c);
+        if (c === current.length) { deleting = true; setTimeout(typeLoop, 1400); return; }
+      } else {
+        typed.textContent = current.slice(0, --c);
+        if (c === 0) { deleting = false; r = (r + 1) % roles.length; }
+      }
+      setTimeout(typeLoop, deleting ? 40 : 75);
+    }
+    typeLoop();
+
+    // WhatsApp
     function enviarWhats(event) {
       event.preventDefault();
-      const nome = document.getElementById('nome').value;
-      const mensagem = document.getElementById('mensagem').value;
+      const nome = document.getElementById('nome').value.trim();
+      const mensagem = document.getElementById('mensagem').value.trim();
       const telefone = '5531987373781';
-      const texto = `Olá! Me chamo ${nome}, ${mensagem}`;
+      const texto = `Olá! Me chamo ${nome}. ${mensagem}`;
       const msgFormatada = encodeURIComponent(texto);
       const url = `https://whatsa.me/${telefone}/?t=${msgFormatada}`;
       window.open(url, '_blank');
     }
 
-    const palavras = [
-  "Dev Front-End",
-  "Full Stack Júnior",
-  "UI/UX Designer",
-  "Dev Back-and"
-  
-];
-    const span = document.querySelector(".digitando");
-    let palavraIndex = 0;
-    let letraIndex = 0;
-    let apagando = false;
-
-    function digitar() {
-      const palavraAtual = palavras[palavraIndex];
-      if (!apagando) {
-        span.textContent = palavraAtual.substring(0, letraIndex++);
-        if (letraIndex > palavraAtual.length) {
-          apagando = true;
-          setTimeout(digitar, 2000);
-          return;
-        }
-      } else {
-        span.textContent = palavraAtual.substring(0, letraIndex--);
-        if (letraIndex < 0) {
-          apagando = false;
-          palavraIndex = (palavraIndex + 1) % palavras.length;
-        }
-      }
-      setTimeout(digitar, apagando ? 50 : 100);
-    }
-
-    digitar();
+    // Mount projects using user's original dataset if available
   </script>
-<script>
-const projetosData = {
-  login: {
-    titulo: "Tela de Login",
-    descricao: "Tela de login moderna com animações suaves e design responsivo.",
-    imagens: ["./img/login.jpg"],
-    link: "#"
-  },
-  portifolio: {
-    titulo: "Portfólio",
-    descricao: "Portfólio pessoal para apresentar projetos e habilidades.",
-    imagens: ["./img/portifolio.png"],
-    link: "#"
-  },
-  formulario: {
-    titulo: "Formulário",
-    descricao: "Formulário minimalista e funcional.",
-    imagens: ["./img/formulario.png"],
-  
-  },
-  calculo: {
-    titulo: "Cálculo de Corte",
-    descricao: "Aplicativo que calcula cortes ideais de alumínio com banco SQL.",
-    imagens: ["./img/calculo.jpeg"],
-    link: "#"
-  },
-  circular: {
-    titulo: "Circular Game",
-    descricao: "Desenvolvi o Circular Game, uma aplicação web interativa que visa educar usuários sobre os princípios da economia circular. Através de seções temáticas e desafios gamificados, os usuários aprendem sobre práticas sustentáveis de forma envolvente. O projeto destaca-se por sua interface intuitiva, design responsivo e integração de elementos interativos que promovem o aprendizado ativo além do sistema de Ranking online. Hospedado no Netlify, o site demonstra a aplicação de tecnologias modernas para criar experiências educativas online.",
-    imagens: ["./img/ciruclar1.png","./img/ciruclar2.png", "./img/ciruclar3.png", "./img/ciruclar5.png"],
-    link: "https://circulargame.netlify.app/"
-  },
-  cultural: {
-    titulo: "Choque de Cultura",
-    descricao: "Desenvolvi o site Choque de Cultura, uma aplicação web interativa voltada para a promoção da cultura e arte do Brasil. O projeto conta com seções como História da Arte Brasileira, Mapa Cultural e um Jogo da Memória, combinando conteúdo educativo com uma experiência visual envolvente. Utilizei HTML, CSS e JavaScript para criar uma plataforma responsiva, intuitiva e rica em conteúdo visual, com o objetivo de democratizar o acesso ao conhecimento cultural.",
-    imagens: ["./img/cultural.png","./img/cultural1.png", "./img/cultural2.png", "./img/cultural3.png","./img/cultural4.png","./img/cultural5.png","./img/cultural6.png", "./img/cultural7.png", "./img/cultural8.png", "./img/cultural9.png"],
-    link: "https://choquedeculturadev.netlify.app/?secao=mapa"
-  },
-  lpgabi: {
-    titulo: "LP Gabriela Dias",
-    descricao: "Desenvolvi o site institucional da nutricionista Gabriela Dias, com o objetivo de apresentar seus serviços, especialidades e facilitar o agendamento de consultas. O projeto destaca-se por sua interface intuitiva, design responsivo e integração de elementos interativos que promovem a experiência do usuário. Hospedado no Netlify, o site demonstra a aplicação de tecnologias modernas para criar uma presença online profissional e acessível.",
-    imagens: ["./img/lpgabi.png", "./img/lpgabi1.png", "./img/lpgabi2.png"],
-    link: "https://gabidiasnutri.netlify.app/"
-  },
-  lpstar: {
-    titulo: "Landing Page Starbucks",
-    descricao: "Desenvolvi uma landing page interativa inspirada na identidade visual da Starbucks, com o objetivo de simular a experiência de navegação em uma página oficial da marca. O projeto destaca-se por seu design responsivo, organização de conteúdo e integração de elementos interativos, demonstrando habilidades em desenvolvimento front-end e atenção aos detalhes visuais. Hospedado no Netlify, o site oferece uma experiência fluida e acessível em diversos dispositivos.",
-    imagens: ["./img/lpstar.png", "./img/lpstar1.png", "./img/lpstar2.png"],
-    link: "sbucksdevleao.netlify.app"
-  }
-};
-</script>
 
-<script>
-document.querySelectorAll('.projetos-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const id = card.getAttribute('data-id');
-    const projeto = projetosData[id];
-    if (!projeto) return;
+  <!-- Reutiliza o objeto projetosData do arquivo original, se existir -->
+  <script>
+    const projetosData = window.projetosData || {
+      login:{titulo:"Tela de Login",descricao:"Tela de login moderna com animações suaves e design responsivo.",imagens:["./img/login.jpg"],link:"#"},
+      portifolio:{titulo:"Portfólio",descricao:"Portfólio pessoal para apresentar projetos e habilidades.",imagens:["./img/portifolio.png"],link:"#"},
+      formulario:{titulo:"Formulário",descricao:"Formulário minimalista e funcional.",imagens:["./img/formulario.png"]},
+      calculo:{titulo:"Cálculo de Corte",descricao:"Aplicativo que calcula cortes ideais de alumínio com banco SQL.",imagens:["./img/calculo.jpeg"],link:"#"},
+      circular:{titulo:"Circular Game",descricao:"Aplicação web educativa sobre economia circular com ranking online.",imagens:["./img/ciruclar1.png"],link:"https://circulargame.netlify.app/"},
+      cultural:{titulo:"Choque de Cultura",descricao:"Portal cultural com mapa, memória e conteúdo educativo.",imagens:["./img/cultural.png"],link:"https://choquedeculturadev.netlify.app/?secao=mapa"},
+      lpgabi:{titulo:"LP Gabriela Dias",descricao:"Site institucional com foco em conversão e responsividade.",imagens:["./img/lpgabi.png"],link:"https://gabidiasnutri.netlify.app/"},
+      lpstar:{titulo:"Landing Page Starbucks",descricao:"Landing inspirada na marca, performance e acessibilidade.",imagens:["./img/lpstar.png"],link:"https://sbucksdevleao.netlify.app"},
+      lpspotify:{titulo:"Landing Page Spotify",descricao:"Experiência interativa com identidade visual da plataforma.",imagens:["./img/spotify1.png"],link:"https://cute-faloodeh-c16c5f.netlify.app/"}
+    };
 
-    const tituloEl = document.getElementById('modal-titulo');
-    const descEl = document.getElementById('modal-descricao');
-    const linkEl = document.getElementById('modal-link');
-    const imagensContainer = document.getElementById('modal-imgs');
-    const dotsContainer = document.getElementById('carousel-dots');
+    const mount = document.getElementById('projects-mount');
+    const cards = Object.entries(projetosData).map(([id, p]) => {
+      return `<article class="proj-card" data-id="${id}">
+        <img src="${(p.imagens && p.imagens[0]) || './img/placeholder.png'}" alt="${p.titulo}" loading="lazy"/>
+        <div class="proj-text">
+          <h3>${p.titulo}</h3>
+          <p>${p.descricao ?? ''}</p>
+          ${p.link ? `<a class="btn btn-sm" href="${p.link}" target="_blank" rel="noopener">Ver Projeto</a>` : ''}
+        </div>
+      </article>`;
+    }).join('');
+    mount.innerHTML = cards;
+  </script>
 
-    // Reset visibilidade e conteúdo
-    tituloEl.style.display = '';
-    descEl.style.display = '';
-    linkEl.style.display = '';
-    tituloEl.textContent = projeto.titulo;
-    descEl.textContent = projeto.descricao;
-    linkEl.href = projeto.link;
-    imagensContainer.innerHTML = '';
-    dotsContainer.innerHTML = '';
+  <!-- GSAP animations (pro-grade JS animations) -->
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    // Parallax float
+    gsap.to(".profile", { y: -20, duration: 4, yoyo: true, repeat: -1, ease: "sine.inOut" });
 
-    if (window._carrosselInterval) clearInterval(window._carrosselInterval);
-
-    let imgAtual = 0;
-    const img = document.createElement('img');
-    img.src = projeto.imagens[imgAtual];
-    img.style.opacity = 1;
-    img.style.transition = "opacity 0.5s ease";
-    img.style.width = "100%";
-    img.style.borderRadius = "8px";
-    imagensContainer.appendChild(img);
-
-    // Criar bolinhas clicáveis
-    projeto.imagens.forEach((_, i) => {
-      const dot = document.createElement('span');
-      dot.classList.add('carousel-dot');
-      if (i === 0) dot.classList.add('active');
-
-      // Clique para trocar imagem manualmente
-      dot.addEventListener('click', () => {
-        clearInterval(window._carrosselInterval); // pausa
-        trocarImagem(i);
-        iniciarAuto(); // reinicia
+    // Fade/slide on scroll for cards
+    gsap.utils.toArray(".card, .proj-card").forEach((el, i) => {
+      gsap.from(el, {
+        scrollTrigger: { trigger: el, start: "top 85%" },
+        opacity: 0,
+        y: 24,
+        duration: 0.6,
+        delay: 0.04 * i,
+        ease: "power2.out"
       });
-
-      dotsContainer.appendChild(dot);
     });
 
-    function trocarImagem(indice) {
-      img.style.opacity = 0;
-      setTimeout(() => {
-        imgAtual = indice;
-        img.src = projeto.imagens[imgAtual];
-        img.style.opacity = 1;
-
-        document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
-          dot.classList.toggle('active', i === imgAtual);
-        });
-      }, 300);
-    }
-
-    function iniciarAuto() {
-      window._carrosselInterval = setInterval(() => {
-        const proxima = (imgAtual + 1) % projeto.imagens.length;
-        trocarImagem(proxima);
-      }, 4000);
-    }
-
-    iniciarAuto(); // inicia carrossel automático
-
-    document.getElementById('modal-projeto').classList.remove('hidden');
-  });
-});
-
-document.querySelector('.modal-fechar').addEventListener('click', () => {
-  document.getElementById('modal-projeto').classList.add('hidden');
-  if (window._carrosselInterval) clearInterval(window._carrosselInterval);
-});
-</script>
-
-
-
+    // Navbar reveal
+    gsap.from(".nav", { y: -60, opacity: 0, duration: 0.8, ease: "power3.out" });
+  </script>
 </body>
-
 </html>
