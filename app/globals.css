@@ -24,3 +24,13 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* ... (código que já estava lá) ... */
+
+@layer utilities {
+  /* Efeito de brilho neon para texto */
+  .text-neon-glow {
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.5),
+                 0 0 20px rgba(0, 255, 65, 0.3),
+                 0 0 30px rgba(0, 255, 65, 0.1);
+  }
+}
