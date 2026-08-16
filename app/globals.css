@@ -1,36 +1,332 @@
 @import "tailwindcss";
 
+/* ============================================================
+   TOKENS
+
+   Regra de ouro deste arquivo: nenhum hex vive num componente.
+   O que está aqui é a paleta inteira do site, e a cena 3D lê estes
+   mesmos valores em tempo de execução (ver lib/theme.ts) — assim
+   trocar o roxo aqui troca a blusa do avatar e a rim light do
+   teclado no mesmo movimento.
+   ============================================================ */
+
+@theme {
+  /* ---------- MUNDO DARK ---------- */
+  --color-void: #0a0808; /* base, quase preto quente */
+  --color-surface: #141019; /* cards e superfícies elevadas */
+  --color-hairline: #241c2e; /* linhas e divisores, mínimo de roxo */
+  --color-bone: #f5f1ea; /* texto principal */
+  --color-muted: #8b8489; /* rótulos e texto suave */
+
+  --color-iris: #8b5cf6; /* destaque primário = blusa do avatar */
+  --color-iris-soft: #a78bfa; /* glows e rim light */
+
+  /* ---------- MUNDO PIXEL ---------- */
+  --color-sky-top: #1a0b2e;
+  --color-sky-base: #3b1e5e;
+  --color-px-card: #2d1b4e;
+  --color-cloud-rose: #f9a8d4;
+  --color-cloud-gold: #fbbf24;
+  --color-neon: #4ade80;
+  --color-cozy-blue: #60a5fa;
+  --color-px-pink: #f472b6;
+
+  /* ---------- FUNCIONAIS ---------- */
+  --color-ok: #4ade80; /* reaproveita o verde do pixel, não inventa cor */
+  --color-bad: #f87171;
+
+  /* ---------- TIPOGRAFIA ---------- */
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "Cascadia Mono", monospace;
+  --font-pixel: var(--font-press-start), ui-monospace, monospace;
+  --font-pixel-body: var(--font-vt323), ui-monospace, monospace;
+
+  /* ---------- ESCALA DE ESPAÇAMENTO ----------
+     Uma escala só, usada em todo lugar. Se um espaço não está aqui,
+     ele não existe no projeto. */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  --space-6: 64px;
+  --space-7: 96px;
+  --space-8: 144px;
+
+  /* Altura do header — toda âncora compensa exatamente este valor. */
+  --header-h: 72px;
+
+  --animate-scrollhint: scrollhint 2.4s ease-in-out infinite;
+  --animate-marquee: marquee 34s linear infinite;
+  --animate-twinkle: twinkle 3s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+/* Véu do roxo — usado em hover, borda de card e estado. Fora do @theme
+   porque `rgb(... / ...)` não vira utilitária de cor útil no Tailwind v4. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --iris-veil: rgb(139 92 246 / 0.12);
+  --iris-glow: rgb(139 92 246 / 0.35);
+  --neon-glow: rgb(74 222 128 / 0.45);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@keyframes scrollhint {
+  0%, 100% { transform: scaleX(0.25); opacity: 0.4; }
+  50%      { transform: scaleX(1);    opacity: 1; }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.8); }
+  50%      { opacity: 1;    transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+
+html {
+  background: var(--color-void);
+  /* Lenis controla a rolagem; o nativo brigaria com ele. */
+  scroll-behavior: auto;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Preto chapado do topo ao rodapé achata a página. Dois halos amplos
+     dão volume sem virar "gradiente de fundo". */
+  background:
+    radial-gradient(120% 80% at 12% -10%, #16101f 0%, transparent 55%),
+    radial-gradient(90% 60% at 96% 18%, #120e1a 0%, transparent 50%),
+    var(--color-void);
+  background-attachment: fixed;
+  color: var(--color-bone);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overscroll-behavior-y: none;
 }
-/* ... (código que já estava lá) ... */
+
+/* Grão. Sem ele, superfície escura grande exibe banding e a tela parece
+   digital demais. Ruído gerado por filtro SVG inline — zero requisição. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: var(--color-iris);
+  color: var(--color-bone);
+}
+
+/* Foco visível em tudo interativo — requisito, não detalhe. */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-iris-soft);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* O cursor customizado some no touch; nada de esconder o nativo lá. */
+@media (hover: hover) and (pointer: fine) {
+  body[data-cursor="on"],
+  body[data-cursor="on"] * {
+    cursor: none;
+  }
+}
+
+/* ============================================================
+   TIPOGRAFIA
+
+   Fraunces no display, Geist no corpo. A pixel só entra depois do
+   portal — ver as utilitárias .pixel-* no fim do arquivo.
+   ============================================================ */
 
 @layer utilities {
-  /* Efeito de brilho neon para texto */
-  .text-neon-glow {
-    text-shadow: 0 0 5px rgba(0, 255, 65, 0.5),
-                 0 0 20px rgba(0, 255, 65, 0.3),
-                 0 0 30px rgba(0, 255, 65, 0.1);
+  .display-hero {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 0.84;
+    letter-spacing: -0.03em;
+    font-variation-settings: "SOFT" 30, "WONK" 1, "opsz" 144;
   }
+
+  .display-xl {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 7.5vw, 6.5rem);
+    font-weight: 600;
+    line-height: 0.94;
+    letter-spacing: -0.025em;
+    font-variation-settings: "SOFT" 20, "WONK" 1, "opsz" 96;
+  }
+
+  .display-lg {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 3.25rem);
+    font-weight: 500;
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    font-variation-settings: "SOFT" 20, "WONK" 0, "opsz" 48;
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .body-lg {
+    font-size: clamp(1.0625rem, 1.35vw, 1.3125rem);
+    line-height: 1.55;
+    letter-spacing: -0.011em;
+  }
+
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Contêiner e sangria consistentes em todas as seções. */
+  .shell {
+    width: 100%;
+    max-width: 90rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 5vw, 4.5rem);
+  }
+
+  .rule {
+    border: 0;
+    border-top: 1px solid var(--color-hairline);
+  }
+
+  /* ---------- SPLIT DE PALAVRAS ----------
+     Estrutura em CSS próprio, sem utilitárias, para nenhuma regra de
+     outra camada trocar o `display` e empilhar as palavras numa coluna.
+     O espaço entre elas é nó de texto real, fora da máscara. */
+  .word {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+  }
+
+  .word-inner {
+    display: inline-block;
+    will-change: transform;
+  }
+
+  .split {
+    white-space: normal;
+  }
+
+  /* Só enquanto o GSAP não montou. Uma trava em JS remove isto depois de
+     1.2s, para o texto nunca sumir se o import falhar. */
+  .split[data-armed="true"] {
+    visibility: hidden;
+  }
+
+  .mask-line {
+    overflow: hidden;
+  }
+
+  /* ---------- SEÇÃO ----------
+     Padding vertical único. Qualquer seção usa esta classe e não
+     sobrescreve — é daí que vem o ritmo da página. */
+  .section {
+    padding-block: var(--space-7);
+    scroll-margin-top: var(--header-h);
+  }
+
+  @media (min-width: 1024px) {
+    .section {
+      padding-block: var(--space-8);
+    }
+  }
+
+  /* ---------- MUNDO PIXEL ---------- */
+  .pixel-title {
+    font-family: var(--font-pixel);
+    line-height: 1.35;
+    letter-spacing: 0.02em;
+  }
+
+  .pixel-body {
+    font-family: var(--font-pixel-body);
+    font-size: 1.375rem;
+    line-height: 1.3;
+  }
+
+  /* Borda de card pixel: dois traços deslocados formam o degrau de pixel
+     nos cantos. `image-rendering` mantém os sprites crocantes. */
+  .pixel-frame {
+    box-shadow:
+      0 0 0 2px var(--color-iris),
+      0 0 0 6px var(--color-px-card),
+      0 0 0 8px var(--color-iris);
+    border-radius: 0;
+  }
+
+  .pixelated {
+    image-rendering: pixelated;
+  }
+
+  .scroll-slim {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-hairline) transparent;
+  }
+  .scroll-slim::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scroll-slim::-webkit-scrollbar-thumb {
+    background: var(--color-hairline);
+    border-radius: 4px;
+  }
+}
+
+/* ============================================================
+   MOVIMENTO REDUZIDO
+
+   Corta movimento decorativo e autônomo. NÃO corta resposta a
+   interação (hover, foco, clique) — desligar isso deixa a página
+   morta, que é pior do que animada demais.
+
+   Duas portas de entrada, e a ordem importa:
+
+   1. A preferência do sistema vale por padrão, MAS só enquanto a
+      pessoa não tiver pedido o contrário. Daí o `:not([data-motion=
+      "completo"])` — sem ele, o botão "ver com animação" ligaria o
+      JavaScript e o CSS continuaria congelado por baixo.
+
+   2. `data-motion="reduzido"` cobre o caminho inverso: quem quer
+      menos movimento sem mexer no sistema operacional.
+
+   O atributo é escrito pelo MotionProvider.
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion="completo"]) .motion-ambient,
+  html:not([data-motion="completo"]) .motion-ambient * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+html[data-motion="reduzido"] .motion-ambient,
+html[data-motion="reduzido"] .motion-ambient * {
+  animation: none !important;
+  transition: none !important;
 }
