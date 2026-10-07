@@ -3,7 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useLocale } from "@/components/providers/LocaleProvider";
-import { projects, projectsSection } from "@/content/content";
+import {
+  bookingClients,
+  bookingSystem,
+  projects,
+  projectsSection,
+  studies,
+} from "@/content/content";
 import { useHasHover, useIsMobile } from "@/lib/hooks";
 import { usePrefersReducedMotion } from "@/components/providers/MotionProvider";
 
@@ -75,9 +81,15 @@ export default function Work() {
 
   return (
     <section id="projetos" ref={raiz} className="section shell relative">
-      <div className="mb-12 flex flex-wrap items-baseline justify-between gap-4">
-        <h2 className="display-xl m-0 text-bone">{t(projectsSection.title)}</h2>
-        <p className="label">{t(projectsSection.note)}</p>
+      <h2 className="display-xl m-0 mb-12 text-bone">{t(projectsSection.title)}</h2>
+
+      <Agenda />
+
+      <div className="mb-6 mt-24 flex flex-wrap items-baseline justify-between gap-4">
+        <h3 className="display-lg m-0 text-[1.5rem] text-bone md:text-[1.75rem]">
+          {t(projectsSection.sites)}
+        </h3>
+        <p className="label m-0">{t(projectsSection.sitesNote)}</p>
       </div>
 
       {/* ---------- preview que segue o cursor (só desktop) ---------- */}
@@ -135,7 +147,7 @@ export default function Work() {
                   <span className="relative mt-2 block aspect-[16/10] w-full max-w-[28rem] overflow-hidden rounded-lg border border-hairline">
                     <Image
                       src={projeto.image}
-                      alt={projeto.name}
+                      alt={projeto.alt ? t(projeto.alt) : projeto.name}
                       fill
                       sizes="(max-width: 768px) 100vw, 448px"
                       className="object-cover object-top"
@@ -157,6 +169,144 @@ export default function Work() {
           </li>
         ))}
       </ol>
+
+      <Estudos />
     </section>
+  );
+}
+
+/**
+ * Bloco de destaque: um sistema, três negócios. Os clientes viram cards com
+ * imagem sempre visível — aqui a imagem é o argumento, não um enfeite de hover.
+ * O selo de status é obrigatório: protótipo não pode passar por produção.
+ */
+function Agenda() {
+  const { t } = useLocale();
+
+  return (
+    <div>
+      <p className="label m-0 mb-3 text-iris-soft">{t(bookingSystem.tag)}</p>
+      <h3 className="display-lg m-0 mb-6 text-[1.75rem] leading-tight text-bone md:text-[2.5rem]">
+        {t(bookingSystem.title)}
+      </h3>
+
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-12">
+        <p className="m-0 max-w-[60ch] text-[1.0625rem] leading-relaxed text-bone/85">
+          {t(bookingSystem.lead)}
+        </p>
+        <ul className="m-0 list-none p-0">
+          {bookingSystem.features.map((f, i) => (
+            <li
+              key={i}
+              className="mb-3 flex gap-3 text-[0.9375rem] leading-relaxed text-muted last:mb-0"
+            >
+              <span aria-hidden="true" className="mt-[0.6em] size-1.5 shrink-0 rounded-full bg-iris" />
+              {t(f)}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="mt-8 grid max-w-[78ch] gap-2 text-sm leading-relaxed text-muted">
+        <p className="m-0">{t(bookingSystem.code)}</p>
+        <p className="m-0">{t(bookingSystem.note)}</p>
+      </div>
+
+      <ul className="m-0 mt-10 grid list-none gap-6 p-0 md:grid-cols-3">
+        {bookingClients.map((c) => (
+          <li key={c.id}>
+            <a
+              href={c.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex h-full flex-col overflow-hidden rounded-lg border border-hairline bg-surface no-underline transition-colors hover:border-iris"
+            >
+              <span className="relative block aspect-[16/10] overflow-hidden border-b border-hairline">
+                <Image
+                  src={c.image}
+                  alt={t(c.alt)}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+              </span>
+              <span className="flex flex-1 flex-col gap-2 p-5">
+                <span className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="label tnum">
+                    {t(c.segment)} · {c.year}
+                  </span>
+                  <span
+                    className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 font-mono text-[0.625rem] uppercase tracking-[0.16em] ${
+                      c.status === "live" ? "border-ok/40 text-ok" : "border-hairline text-muted"
+                    }`}
+                  >
+                    {c.status === "live" ? (
+                      <span aria-hidden="true" className="size-1.5 rounded-full bg-ok" />
+                    ) : null}
+                    {t(bookingSystem.status[c.status])}
+                  </span>
+                </span>
+                <span className="flex items-baseline justify-between gap-3">
+                  <span className="display-lg text-[1.375rem] leading-tight text-bone transition-colors group-hover:text-iris">
+                    {c.name}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="text-muted transition-[color,transform] duration-300 group-hover:translate-x-1 group-hover:text-iris"
+                  >
+                    ↗
+                  </span>
+                </span>
+                <span className="text-[0.9375rem] leading-relaxed text-muted">{t(c.blurb)}</span>
+                <span className="mt-auto pt-2 font-mono text-[0.6875rem] text-muted">
+                  {c.stack.join(" · ")}
+                </span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/** Estudos: separados dos clientes, sem capa e com o rótulo à vista. */
+function Estudos() {
+  const { t } = useLocale();
+
+  return (
+    <div className="mt-24">
+      <h3 className="display-lg m-0 mb-6 text-[1.5rem] text-bone md:text-[1.75rem]">
+        {t(projectsSection.studies)}
+      </h3>
+      <ul className="m-0 list-none border-t border-hairline p-0">
+        {studies.map((s) => (
+          <li key={s.id} className="border-b border-hairline">
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group grid gap-2 py-6 no-underline md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-8"
+            >
+              <span className="flex flex-col gap-1.5">
+                <span className="text-[1.25rem] leading-tight text-bone transition-colors group-hover:text-iris">
+                  {s.name}
+                </span>
+                <span className="text-[0.9375rem] leading-relaxed text-muted">{t(s.label)}</span>
+              </span>
+              <span className="flex items-center gap-4">
+                <span className="font-mono text-[0.6875rem] text-muted">{s.stack.join(" · ")}</span>
+                <span
+                  aria-hidden="true"
+                  className="text-muted transition-[color,transform] duration-300 group-hover:translate-x-1 group-hover:text-iris"
+                >
+                  ↗
+                </span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

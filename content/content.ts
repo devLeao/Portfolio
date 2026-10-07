@@ -363,7 +363,7 @@ export type Role = {
 export const experience: Role[] = [
   {
     id: "performance",
-    org: { pt: "Grupo empresarial multi-marca", en: "Multi-brand business group" },
+    org: { pt: "in8 Holding", en: "in8 Holding" },
     title: {
       pt: "Assistente de Processos com IA — Núcleo de Performance",
       en: "AI Process Assistant — Performance Unit",
@@ -395,7 +395,7 @@ export const experience: Role[] = [
   },
   {
     id: "bi",
-    org: { pt: "Grupo empresarial multi-marca", en: "Multi-brand business group" },
+    org: { pt: "in8 Holding", en: "in8 Holding" },
     title: {
       pt: "Analista de BI e Automação — Estágio",
       en: "BI & Automation Analyst — Internship",
@@ -447,7 +447,10 @@ export const experienceSection = {
 };
 
 /* ============================================================
-   PROJETOS PROFISSIONAIS
+   PROJETOS
+
+   Três blocos, nesta ordem: o sistema de agenda (destaque), os sites e
+   portais, e os estudos. Estudo não é cliente — fica separado e rotulado.
    ============================================================ */
 
 export type Project = {
@@ -457,9 +460,125 @@ export type Project = {
   year: string;
   href: string;
   image: string;
+  /** Texto alternativo da imagem; sem ele, o card usa o nome do projeto. */
+  alt?: I18n;
   blurb: I18n;
   stack: string[];
 };
+
+/* ---------- (a) agenda e gestão de clientes ---------- */
+
+export type BookingClient = {
+  id: string;
+  name: string;
+  segment: I18n;
+  /** "live" = no ar com o negócio usando; "prototype" = dados e login fictícios. */
+  status: "live" | "prototype";
+  year: string;
+  href: string;
+  image: string;
+  alt: I18n;
+  blurb: I18n;
+  stack: string[];
+};
+
+export const bookingSystem = {
+  title: { pt: "Agenda e gestão de clientes", en: "Booking and client management" } satisfies I18n,
+  tag: { pt: "um sistema, três negócios", en: "one system, three businesses" } satisfies I18n,
+  lead: {
+    pt: "Agendamento online para quem vive de hora marcada. O cliente entra com a conta Google, escolhe serviço, dia e horário, e cancela sozinho dentro do prazo. Quem falta sem avisar fica com pendência e só volta a agendar depois de pagar.",
+    en: "Online booking for businesses that run on appointments. Clients sign in with Google, pick a service, day and time, and can cancel on their own within the notice window. A no-show leaves an outstanding balance, and booking stays locked until it's paid.",
+  } satisfies I18n,
+  features: [
+    {
+      pt: "Agenda em tempo real, com mais de um serviço no mesmo horário e checagem de conflito.",
+      en: "Real-time schedule, several services in one slot, and clash checks.",
+    },
+    {
+      pt: "Prazo de cancelamento, falta marcada pelo dono e multa sobre o valor do serviço.",
+      en: "Cancellation window, no-shows flagged by the owner, and a fine on the service price.",
+    },
+    {
+      pt: "Agendamento bloqueado até a pendência ser paga, com Pix gerado no próprio site.",
+      en: "Booking locked until the balance is cleared, with a Pix code generated on the site.",
+    },
+    {
+      pt: "Painel do dono: agenda do dia, bloqueio de dias e horários, ficha do cliente com histórico e observações, débitos avulsos, catálogo e relatórios.",
+      en: "Owner dashboard: daily schedule, blocked days and slots, client records with history and notes, manual charges, catalogue and reports.",
+    },
+  ] satisfies I18n[],
+  code: {
+    pt: "Duas gerações de código. A Cadu Barber roda a primeira, com Firebase. Arian Barber e Ana Laura partem de uma mesma base nova, cada uma no próprio repositório, com o catálogo e as regras de cada negócio.",
+    en: "Two generations of code. Cadu Barber runs the first one, on Firebase. Arian Barber and Ana Laura share a newer codebase, each in its own repository, with each business's own catalogue and rules.",
+  } satisfies I18n,
+  note: {
+    pt: "A Cadu está no ar, com cliente agendando. Arian e Ana Laura estão em protótipo: site e painel funcionam com dados e login fictícios, para os donos validarem antes de o backend entrar.",
+    en: "Cadu is live, with clients booking. Arian and Ana Laura are prototypes: site and dashboard run on fictitious data and login, so the owners can sign off before the backend goes in.",
+  } satisfies I18n,
+  status: {
+    live: { pt: "no ar", en: "live" } satisfies I18n,
+    prototype: { pt: "protótipo", en: "prototype" } satisfies I18n,
+  },
+};
+
+export const bookingClients: BookingClient[] = [
+  {
+    id: "cadu-barber",
+    name: "Cadu Barber",
+    segment: { pt: "Barbearia", en: "Barbershop" },
+    status: "live",
+    year: "2024",
+    href: "https://cadubarber.com.br/",
+    image: "/sitecadubarber.png",
+    alt: {
+      pt: "Página inicial da Cadu Barber: logotipo dourado e o título “A referência da região” ao lado de uma foto de clientes reunidos na barbearia.",
+      en: "Cadu Barber home page: gold logo and the headline “A referência da região” next to a photo of customers gathered in the barbershop.",
+    },
+    blurb: {
+      pt: "Login Google, falta marcada pelo dono, lista negra e bloqueio de dias e horários.",
+      en: "Google login, owner-flagged no-shows, a blacklist, and blocked days and slots.",
+    },
+    stack: ["React", "Firebase Auth", "Firestore"],
+  },
+  {
+    id: "arian-barber",
+    name: "Arian Barber",
+    segment: { pt: "Barbearia", en: "Barbershop" },
+    status: "prototype",
+    year: "2026",
+    href: "https://arianbarber.vercel.app/",
+    image: "/casearianbarber.png",
+    alt: {
+      pt: "Página inicial da Arian Barber: fundo escuro com foto de um corte, o título “Tradição na navalha.” e botões para agendar horário e ver serviços.",
+      en: "Arian Barber home page: dark background with a haircut photo, the headline “Tradição na navalha.” and buttons to book and see services.",
+    },
+    blurb: {
+      pt: "Vários serviços num horário só, multa por falta e uma vitrine de produtos para separar e retirar no próximo corte.",
+      en: "Several services in one slot, no-show fines, and a product shelf to reserve and pick up at the next cut.",
+    },
+    stack: ["React", "Vite", "Tailwind"],
+  },
+  {
+    id: "ana-laura",
+    name: "Ana Laura",
+    segment: { pt: "Cílios e sobrancelhas", en: "Lashes and brows" },
+    status: "prototype",
+    year: "2026",
+    href: "https://analaura.vercel.app/",
+    image: "/caseanalaura.png",
+    alt: {
+      pt: "Página inicial do estúdio Ana Laura · Lash & Brow: fundo rosado, o título “Seu olhar, em evidência.”, ilustração de cílios e botão de agendar horário.",
+      en: "Ana Laura · Lash & Brow home page: blush background, the headline “Seu olhar, em evidência.”, an eyelash illustration and a booking button.",
+    },
+    blurb: {
+      pt: "Cada modelo de cílio tem aplicação e manutenção com preço e prazo próprios. Serviços e preços já são os reais.",
+      en: "Each lash style has its own application and refill, each with its own price and interval. Services and prices are already the real ones.",
+    },
+    stack: ["React", "Vite", "Tailwind"],
+  },
+];
+
+/* ---------- (b) sites e portais ---------- */
 
 export const projects: Project[] = [
   {
@@ -489,17 +608,21 @@ export const projects: Project[] = [
     stack: ["Next.js", "React", "Tailwind"],
   },
   {
-    id: "cadu-barber",
+    id: "x1-da-norte",
     index: "03",
-    name: "Cadu Barber",
-    year: "2024",
-    href: "https://cadubarber.com.br/",
-    image: "/sitecadubarber.png",
-    blurb: {
-      pt: "Agendamento com login Google, taxa por falta e blacklist — as regras que o dono pediu.",
-      en: "Booking with Google login, no-show fees and a blacklist — the rules the owner actually asked for.",
+    name: "X1 da Norte",
+    year: "2026",
+    href: "https://x1danorte.vercel.app/",
+    image: "/casex1.png",
+    alt: {
+      pt: "Página inicial do X1 da Norte: título “Aonde os brabos se encontram” em preto e dourado ao lado de uma montagem com os atletas da liga.",
+      en: "X1 da Norte home page: the headline “Aonde os brabos se encontram” in black and gold next to a composite of the league's players.",
     },
-    stack: ["React", "Node.js", "PostgreSQL", "OAuth"],
+    blurb: {
+      pt: "A casa da liga de X1 de futebol de BH: data e local da próxima edição, regras do ranking, campeões e notícias. Desafiante se apresenta por vídeo no Instagram.",
+      en: "Home of a 1v1 football league in Belo Horizonte: the next event's date and venue, ranking rules, champions and news. Challengers step up by video on Instagram.",
+    },
+    stack: ["Next.js", "TypeScript", "Tailwind", "Vercel"],
   },
   {
     id: "devleao",
@@ -516,12 +639,35 @@ export const projects: Project[] = [
   },
 ];
 
+/* ---------- (c) estudos ----------
+   Sem imagem de capa: o print do clone é dominado pelo logotipo da marca. */
+
+export type Study = {
+  id: string;
+  name: string;
+  href: string;
+  label: I18n;
+  stack: string[];
+};
+
+export const studies: Study[] = [
+  {
+    id: "starbucks",
+    name: "Clone Starbucks",
+    href: "https://sbucksdevleao.netlify.app/",
+    label: {
+      pt: "Estudo de front-end. Reprodução de layout para prática, sem vínculo com a Starbucks.",
+      en: "Front-end study. A layout reproduction for practice, not affiliated with Starbucks.",
+    },
+    stack: ["HTML", "CSS", "JavaScript"],
+  },
+];
+
 export const projectsSection = {
   title: { pt: "PROJETOS", en: "WORK" } satisfies I18n,
-  note: {
-    pt: "Todos no ar, todos com cliente usando.",
-    en: "All live, all with real clients on them.",
-  } satisfies I18n,
+  sites: { pt: "Sites e portais", en: "Sites and portals" } satisfies I18n,
+  sitesNote: { pt: "Todos no ar.", en: "All live." } satisfies I18n,
+  studies: { pt: "Estudos", en: "Studies" } satisfies I18n,
   visit: { pt: "abrir o site", en: "open site" } satisfies I18n,
 };
 
@@ -807,8 +953,8 @@ export const demos = {
 export const arcade = {
   titulo: { pt: "ARCADE", en: "ARCADE" } satisfies I18n,
   subtitulo: {
-    pt: "Quatro jogos que eu escrevi aqui mesmo. Sem engine, sem asset baixado, som sintetizado na hora.",
-    en: "Four games written right here. No engine, no downloaded assets, sound synthesised on the fly.",
+    pt: "Quatro jogos meus: dois clássicos escritos aqui mesmo, uma corrida em 3D e a tela de luta do jogo que estou desenvolvendo.",
+    en: "Four games of mine: two classics written right here, a 3D race, and the fight screen from the game I'm building.",
   } satisfies I18n,
   jogar: { pt: "jogar", en: "play" } satisfies I18n,
   denovo: { pt: "de novo", en: "again" } satisfies I18n,
@@ -843,35 +989,40 @@ export const arcade = {
   luta: {
     nome: { pt: "BRIGA DE RUA", en: "STREET BRAWL" } satisfies I18n,
     como: {
-      pt: "← → anda · J soco · K chute · S defesa · P pausa. A distância decide se o golpe pega.",
-      en: "← → move · J punch · K kick · S guard · P pause. Distance decides if it lands.",
+      pt: "← → anda · J soco · K chute · S defesa.",
+      en: "← → move · J punch · K kick · S guard.",
     } satisfies I18n,
-    fraco: { pt: "soco", en: "punch" } satisfies I18n,
-    forte: { pt: "chute", en: "kick" } satisfies I18n,
-    defesa: { pt: "defesa", en: "guard" } satisfies I18n,
-    ganhou: { pt: "VOCE VENCEU!", en: "YOU WIN!" } satisfies I18n,
-    perdeu: { pt: "NOCAUTE", en: "KNOCKED OUT" } satisfies I18n,
-    pausar: { pt: "pausar", en: "pause" } satisfies I18n,
-    retomar: { pt: "continuar", en: "resume" } satisfies I18n,
-    pausado: { pt: "PAUSADO", en: "PAUSED" } satisfies I18n,
-    dicaPausa: { pt: "P ou Esc também pausam.", en: "P or Esc also pause." } satisfies I18n,
+    foco: {
+      pt: "Clique na tela da luta para os comandos irem para o jogo.",
+      en: "Click the fight screen so the keys go to the game.",
+    } satisfies I18n,
+    controles: { pt: "controles da luta", en: "fight controls" } satisfies I18n,
+    telaCheia: { pt: "tela cheia", en: "fullscreen" } satisfies I18n,
     regra: {
-      pt: "Ringue de verdade: você anda, escolhe a distância, e o golpe só conecta no alcance certo.",
-      en: "A real ring: you move, choose the distance, and a strike only lands at the right range.",
+      pt: "A tela de luta do jogo que estou desenvolvendo, rodando aqui dentro com os sprites dele. O golpe não acerta porque você apertou: acerta se a distância estiver certa.",
+      en: "The fight screen from the game I'm building, running right here with its own sprites. A strike doesn't land because you pressed the key: it lands if the distance is right.",
     } satisfies I18n,
   },
   corrida: {
-    nome: { pt: "FUGA NA PISTA", en: "LANE RUSH" } satisfies I18n,
+    nome: { pt: "CORRIDA NOTURNA", en: "NIGHT CIRCUIT" } satisfies I18n,
     como: {
-      pt: "Setas, A/D ou toque nos lados. Três vidas. A pista só acelera.",
-      en: "Arrows, A/D or tap the sides. Three lives. The road only speeds up.",
+      pt: "↑ acelera · ↓ freia · ← → vira (ou WASD). Três voltas contra três rivais.",
+      en: "↑ throttle · ↓ brake · ← → steer (or WASD). Three laps against three rivals.",
     } satisfies I18n,
-    desviados: { pt: "desviados", en: "dodged" } satisfies I18n,
-    vidas: { pt: "vidas restantes", en: "lives left" } satisfies I18n,
-    fim: { pt: "BATEU —", en: "CRASHED —" } satisfies I18n,
+    volta: { pt: "volta", en: "lap" } satisfies I18n,
+    posicao: { pt: "posição", en: "position" } satisfies I18n,
+    melhorVolta: { pt: "melhor volta", en: "best lap" } satisfies I18n,
+    tempo: { pt: "tempo", en: "time" } satisfies I18n,
+    carregando: { pt: "montando a pista…", en: "building the track…" } satisfies I18n,
+    largada: { pt: "VAI!", en: "GO!" } satisfies I18n,
+    chegada: { pt: "CHEGOU EM", en: "FINISHED" } satisfies I18n,
+    acelerar: { pt: "acelerar", en: "throttle" } satisfies I18n,
+    frear: { pt: "frear", en: "brake" } satisfies I18n,
+    esquerda: { pt: "virar à esquerda", en: "steer left" } satisfies I18n,
+    direita: { pt: "virar à direita", en: "steer right" } satisfies I18n,
     regra: {
-      pt: "Três vidas, motor que acompanha a pista, e a dificuldade sendo a mesma variável da velocidade.",
-      en: "Three lives, an engine that tracks the road, and difficulty being the very same variable as speed.",
+      pt: "3D de verdade, em three.js. A pista é uma curva fechada, os rivais tiram o pé antes da curva, e a grama cobra caro de quem corta caminho.",
+      en: "Proper 3D, in three.js. The track is a closed curve, rivals lift before the corners, and the grass charges dearly for shortcuts.",
     } satisfies I18n,
   },
 };
