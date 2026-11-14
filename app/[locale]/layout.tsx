@@ -11,7 +11,7 @@ import Cursor from "@/components/shell/Cursor";
 import MotionInvite from "@/components/shell/MotionInvite";
 import { LOCALES, meta, nav, t, type Locale } from "@/content/content";
 
-const SITE = "https://leandroleao.dev";
+const SITE = "https://devleaoport.vercel.app";
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
